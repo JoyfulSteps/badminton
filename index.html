@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Lộ trình huấn luyện cầu lông 12 tuần cho người mới bắt đầu. Hướng dẫn kỹ thuật, phòng chấn thương, trang bị và checklist." />
+  <title>Badminton Roadmap – Lộ trình cầu lông cho Newbie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <div id="app">
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <span class="logo-icon">🏸</span>
+          <span class="logo-text">Badminton<br><small>Roadmap</small></span>
+        </div>
+        <button id="sidebar-close" class="sidebar-close" aria-label="Đóng menu">✕</button>
+      </div>
+      <nav id="sidebar-nav" class="sidebar-nav"></nav>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="topbar">
+        <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Mở menu">☰</button>
+        <div class="topbar-title">Lộ trình cầu lông</div>
+        <div class="topbar-actions">
+          <button id="theme-toggle" class="theme-btn" aria-label="Đổi theme">🌙</button>
+        </div>
+      </header>
+      <main id="content" class="content"></main>
+    </div>
+  </div>
+
+  <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
