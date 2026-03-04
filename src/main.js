@@ -2,6 +2,7 @@ import './style.css';
 import { phases, weeks } from './content/roadmap.js';
 import { injuryPrevention, equipmentGuide, postSessionChecklist } from './content/supplements.js';
 import { warmup, cooldown } from './content/warmup.js';
+import { rules } from './content/rules.js';
 
 // ===== State =====
 const state = {
@@ -90,6 +91,9 @@ function renderSidebar() {
   html += `
     <div class="nav-section">
       <div class="nav-section-title">📚 Bổ trợ</div>
+      <a class="nav-item ${currentHash === '#rules' ? 'active' : ''}" href="#rules">
+        <span class="nav-icon">📏</span> Luật chơi cầu lông
+      </a>
       <a class="nav-item ${currentHash === '#injury' ? 'active' : ''}" href="#injury">
         <span class="nav-icon">🏥</span> Phòng chấn thương
       </a>
@@ -165,6 +169,11 @@ function renderHome() {
   html += `
     <div class="section-title">Nội dung bổ trợ</div>
     <div class="supplement-grid">
+      <div class="supplement-card" onclick="location.hash='#rules'">
+        <span class="supp-icon">📏</span>
+        <div class="supp-title">Luật chơi</div>
+        <div class="supp-desc">Tính điểm, giao cầu, lỗi</div>
+      </div>
       <div class="supplement-card" onclick="location.hash='#injury'">
         <span class="supp-icon">🏥</span>
         <div class="supp-title">Phòng chấn thương</div>
@@ -429,6 +438,29 @@ function renderPostChecklist() {
   return html;
 }
 
+function renderRules() {
+  let html = `
+    <div class="lesson-header">
+      <div class="lesson-breadcrumb">
+        <a href="#home">Trang chủ</a> <span>›</span> <span>Luật chơi cầu lông</span>
+      </div>
+      <h1 class="lesson-title">${rules.title}</h1>
+    </div>
+    <div class="supplement-content">
+  `;
+
+  rules.sections.forEach(section => {
+    html += `<h2>${section.title}</h2>`;
+    section.content.forEach(block => {
+      html += `<h3>${block.subtitle}</h3>`;
+      html += `<ul>${block.items.map(item => `<li>${item}</li>`).join('')}</ul>`;
+    });
+  });
+
+  html += `</div>`;
+  return html;
+}
+
 // ===== Router =====
 function route() {
   const hash = location.hash || '#home';
@@ -440,6 +472,8 @@ function route() {
   } else if (hash.startsWith('#week-')) {
     const weekId = parseInt(hash.replace('#week-', ''));
     html = renderWeek(weekId);
+  } else if (hash === '#rules') {
+    html = renderRules();
   } else if (hash === '#injury') {
     html = renderInjuryPrevention();
   } else if (hash === '#equipment') {
